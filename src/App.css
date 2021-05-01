@@ -11,9 +11,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #ece9e6;
-  background: -webkit-linear-gradient(to right, #ffffff, #ece9e6);
-  background: linear-gradient(to right, #ffffff, #ece9e6);
+  background: #00b09b;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #96c93d, #00b09b);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #96c93d, #00b09b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,6 +32,7 @@ code {
   border-radius: 3px;
   overflow: hidden;
   width: 400px;
+  margin-top: 1rem;
 }
 
 form {
@@ -54,10 +56,11 @@ form {
     color: rgb(138, 129, 141);
     font-size: 1.5rem;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .fav-container {
-    background-color: #e2f8b3;
+    background-color: #f6f6f6;
     padding: 0.25rem 1rem;
     text-align: center;
 }
@@ -80,7 +83,7 @@ form {
 .fav-meals li img {
     border: 2px solid #ffffff;
     border-radius: 50%;
-    box-shadow: 0 0 10px 2px #3333331a;
+    box-shadow: 0 0 10px 3px #3333331a;
     object-fit: cover;
     height: 70px;
     width: 70px;

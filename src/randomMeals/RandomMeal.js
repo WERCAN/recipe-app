@@ -11,6 +11,7 @@ export function RandomMeal(props) {
 
       <div className="meal-body">
         <h4>{props.name}</h4>
+        
         <HeartBtn mealID={props.mealID}
             name={props.name}
             area={props.area}
