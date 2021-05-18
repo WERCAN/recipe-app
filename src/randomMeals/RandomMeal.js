@@ -11,11 +11,13 @@ export function RandomMeal(props) {
 
       <div className="meal-body">
         <h4>{props.name}</h4>
-        
-        <HeartBtn mealID={props.mealID}
-            name={props.name}
-            area={props.area}
-            image={props.image} func={ props.functionCall}/>
+
+        <HeartBtn
+          nameFromRandom={props.name}
+          imageFromRandom={props.image}
+          mealID={props.mealID}
+          func={props.functionCall}
+        />
       </div>
     </div>
   );

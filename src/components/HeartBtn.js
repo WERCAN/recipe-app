@@ -1,21 +1,40 @@
 import React, { Component } from "react";
 
 export default class HeartBtn extends Component {
-  documentData;
   constructor(props) {
     super(props);
+
     this.state = {
-      title: this.props.name,
-      image: this.props.image,
-      mealID: this.props.mealID,
       toggle: false,
     };
   }
 
-  handleClickSubmit() {
+  mealsInfo = {
+    name: this.props.name,
+    image: this.props.image,
+    mealIDFromRandom: this.props.mealID ? this.props.mealID : "",
+    mealIDFromSearch: this.props.mealId ? this.props.mealId : "",
+  };
+
+  getMealsLS() {
+    const mealsInfo = JSON.parse(localStorage.getItem("mealsInfo"));
+    return mealsInfo === null ? [] : mealsInfo;
+  }
+
+  removeMealsLS(mealId) {
+    const meals = this.getMealsLS();
+
     localStorage.setItem(
-      this.props.name,
-      JSON.stringify(this.state.title, this.state.image, this.state.mealID)
+      "mealsInfo",
+      JSON.stringify(meals.filter((id) => id !== mealId))
+    );
+  }
+
+  handleClickSubmit() {
+    const meals = this.getMealsLS();
+    localStorage.setItem(
+      "mealsInfo",
+      JSON.stringify([...meals, this.mealsInfo])
     );
   }
 
@@ -23,8 +42,18 @@ export default class HeartBtn extends Component {
     this.setState((prevState) => ({
       toggle: !prevState.toggle,
     }));
-    this.props.func(this.state);
-    // console.log(this.state)
+
+    if (this.props.mealID) {
+      this.props.func(this.props.nameFromRandom);
+    }
+
+    if (this.props.mealId) {
+      this.props.func(this.props.name);
+    }
+
+    if (this.state.toggle === true) {
+      this.props.func(this.props.name, this.props.mealId);
+    }
   }
 
   render() {

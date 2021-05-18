@@ -1,29 +1,34 @@
 import React from "react";
 
-export default function FavMeals({ favouriteMealData }) {
-  
-  console.log(favouriteMealData)
+export function FavMeals({ favouriteMealData, unFavMeal }) {
+  // below gets Meals From Local Storage
+  // however can't get image and name from random recipe !!!!!!!!!
+  // const mealsInfo = JSON.parse(localStorage.getItem("mealsInfo"));
+  // we can get favmeal's image and name from mealsInfo
 
-  const documentData = JSON.parse(localStorage.getItem("document"));
-
-  if (documentData) {
-    var list = (
-      <ul className="fav-meals" id="fav-meals">
-        <li>
-          <img src={documentData.image} alt="" />
-          <span>{documentData.title}</span>
-        </li>
-      </ul>
+  var list = (favouriteMealData || []).map((item) => {
+    return (
+      <li key={item.idMeal}>
+        <img src={item.strMealThumb} alt="" />
+        <span>{item.strMeal}</span>
+      </li>
     );
-  } else {
+  });
+
+  if (unFavMeal) {
+    const newList =list.filter((item) => item.key !== unFavMeal);
+    list = newList;
   }
 
+  console.log(list);
 
   return (
     <div>
       <div className="fav-container">
         <h3>Favorite Meals</h3>
-        {list}
+        <ul className="fav-meals" id="fav-meals">
+          {list}
+        </ul>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ export function SearchMeals({name,image,mealID,functionCall,area}) {
 
       <div className="meal-body">
         <h4>{name}</h4>
-        <HeartBtn favMeal={mealID} func={functionCall}/>
+        <HeartBtn name={name} mealId={mealID} func={functionCall} image={image}/>
       </div>
     </div>
   );

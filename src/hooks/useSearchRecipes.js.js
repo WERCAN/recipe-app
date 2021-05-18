@@ -4,7 +4,7 @@ import axios from "axios";
 export const useSearchRecipes = (searchTerm) => {
   const [searchMeal, setSearchMeal] = useState([]);
 
-  // try{()()} first one function name second one to call it
+  // ()() first one function itself, second one to call it back
   useEffect(() => {
     try {
       (async () => {
